@@ -41,7 +41,7 @@ body <- dashboardBody(
                     # add some text in bold
                    strong("Example Shiny Dashboard for the"  ,
                           a("BIOS2 Program", href="https://bios2.usherbrooke.ca/"),
-                          "training module, \"Creating Shiny Applications in R.\""),
+                          "training module, \"Creating Shiny Applications in R.\". "),
                    
                    # linebreak
                    br(),
@@ -50,10 +50,11 @@ body <- dashboardBody(
                    p("Use the space provided and suggestions in the code to add  an additional widget to the app."),
                    
                    # linebreak
-                   br(),
-                   
+
                    # text with link to
-                   p("Created by Jake Lawlor.",  strong(a("See Code Here!", href="https://github.com/jakelawlor/Volcano_Shiny_App/")))
+                   p("Created by Jake Lawlor.",  strong(a("See the Code!", href="https://github.com/jakelawlor/Volcano_Shiny_App/"))),
+                   a("See More BIOS2 Trainings Here", href="https://bios2.github.io/"),
+                   
                 
                  
                ), # end box 1
