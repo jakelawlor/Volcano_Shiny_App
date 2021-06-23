@@ -175,7 +175,7 @@ function(input, output, session) {
                        "<br>",
                        "<b> Type: </b>",volcano_type_consolidated, "<br>",
                        "<b> Continent: </b>",continent, "<br>",
-                       "<b> Elevation: </b>", elevation, "ft.", "<br>",
+                       "<b> Elevation: </b>", elevation, "m.", "<br>",
                        "<b> Last Eruption: </b>", last_eruption_year) 
       ) # end add circle markers
     
