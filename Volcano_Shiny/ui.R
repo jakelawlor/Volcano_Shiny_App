@@ -42,7 +42,7 @@ fluidRow(
                 # add some text in bold
                 strong("Example Shiny Dashboard for the"  ,
                        a("BIOS2 Program", href="https://bios2.usherbrooke.ca/", target = "_blank"),
-                       "training module, \"Creating Shiny Applications in R.\". "),
+                       "training module, \"Creating Shiny Applications in R.\" "),
                 
                 # linebreak
                 br(),
