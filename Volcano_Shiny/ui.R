@@ -23,7 +23,7 @@ header <- dashboardHeader(
 
 # create dashboard body - this is the major UI element
 body <- dashboardBody(
-
+    
     # make first row of elements (actually, this will be the only row)
     fluidRow(
         
@@ -36,27 +36,27 @@ body <- dashboardBody(
                box( width = NULL,
                     status="primary", # this line can change the automatic color of the box. options are "info", "primary","warning","danger', and "success"
                     title = NULL,
-                   # background = "black",
-
+                    # background = "black",
+                    
                     # add some text in bold
-                   strong("Example Shiny Dashboard for the"  ,
-                          a("BIOS2 Program", href="https://bios2.usherbrooke.ca/"),
-                          "training module, \"Creating Shiny Applications in R.\". "),
-                   
-                   # linebreak
-                   br(),
-                   
-                   # text in normal
-                   p("Use the space provided and suggestions in the code to add  an additional widget to the app."),
-                   
-                   # linebreak
-
-                   # text with link to
-                   p("Created by Jake Lawlor.",  strong(a("See the Code!", href="https://github.com/jakelawlor/Volcano_Shiny_App/"))),
-                   a("See More BIOS2 Trainings Here", href="https://bios2.github.io/"),
-                   
-                
-                 
+                    strong("Example Shiny Dashboard for the"  ,
+                           a("BIOS2 Program", href="https://bios2.usherbrooke.ca/"),
+                           "training module, \"Creating Shiny Applications in R.\". "),
+                    
+                    # linebreak
+                    br(),
+                    
+                    # text in normal
+                    p("Use the space provided and suggestions in the code to add  an additional widget to the app."),
+                    
+                    # linebreak
+                    
+                    # text with link to
+                    p("Created by Jake Lawlor.",  strong(a("See the Code!", href="https://github.com/jakelawlor/Volcano_Shiny_App/"))),
+                    a("See More BIOS2 Trainings Here", href="https://bios2.github.io/"),
+                    
+                    
+                    
                ), # end box 1
                
                
@@ -100,7 +100,7 @@ body <- dashboardBody(
                    
                    # see available widgets here: http://shinyapps.dreamrs.fr/shinyWidgets/
                    # and here: https://shiny.rstudio.com/gallery/widget-gallery.html
-
+                   
                    
                ), # end box 2
                
@@ -116,7 +116,7 @@ body <- dashboardBody(
                ) # end box 3
                
         ), # end column 1
-         
+        
         # second column - 75% of page (9 of 12 columns)
         #--------------------------------------------------
         column(width = 9,
