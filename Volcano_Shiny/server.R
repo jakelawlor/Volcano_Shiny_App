@@ -6,11 +6,15 @@ function(input, output, session) {
   
   
   # read in the prepared data 
-  # (just the volcanoes spreadsheet with a new column for "continent")
+  # this dataset is from the TidyTuesday dataset from May 12, 2020, "Volcano Erutions"
+  # found here: https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-05-12/readme.md
+  # we uploaded the data in the data_raw folder script, manipulated and cleaned, then saved in the "data" folder
+  # you can view all code there. 
+  # here, we are uploading the already manipulated dataset:
   volcano <- readr::read_rds(here::here("data", "volcanoes.rds"))
   
   
-  # make reactive dataset
+  # make reactive dataset of selected volcanoes to show on the map
   # ------------------------------------------------
   # Make a subset of the data as a reactive value
   # this subset pulls volcano rows only in the selected types of volcano
