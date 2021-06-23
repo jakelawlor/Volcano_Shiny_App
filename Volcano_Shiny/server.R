@@ -14,8 +14,6 @@ library(here)
 
 function(input, output, session) {
   
-  
-  
   # Import and clean data  ----------------------------------------
   # this dataset comes from the May 12, 2020 TidyTuesday dataset, "eruptions"
   # here, we upload data from the TidyTuesday repo and slightly manipulate it
@@ -177,7 +175,8 @@ function(input, output, session) {
                        "<br>",
                        "<b> Type: </b>",volcano_type_consolidated, "<br>",
                        "<b> Continent: </b>",continent, "<br>",
-                       "<b> Elevation: </b>", elevation, "ft.") 
+                       "<b> Elevation: </b>", elevation, "ft.", "<br>",
+                       "<b> Last Eruption: </b>", last_eruption_year) 
       ) # end add circle markers
     
   }) # end observe

@@ -16,8 +16,8 @@ library(ggplot2)
 
 # make dashboard header
 header <- dashboardHeader(
-    title = "Exploring Volcanoes of the World",
-    titleWidth = 350 # since we have a long title, we need to extend width element in pixels
+    title = paste0(emojifont::emoji('volcano'), " Exploring Volcanoes of the World ",emojifont::emoji('volcano')),
+    titleWidth = 400 # since we have a long title, we need to extend width element in pixels
 )
 
 
@@ -81,7 +81,7 @@ fluidRow(
                
                strong("Space for your additional widget here:"),
                
-               br(), br(), br(), br(), br(), # add a bunch of line breaks to leave space. these can be removed
+               br(), br(), br(), br(), br(), # add a bunch of line breaks to leave space. these can be removed when you add your widget
                
                # space for your addition here:
                #-------------------------------------------
