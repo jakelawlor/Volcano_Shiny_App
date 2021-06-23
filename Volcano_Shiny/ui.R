@@ -90,13 +90,16 @@ body <- dashboardBody(
                    # you'll need to paste code for some widget, name it, then call it at the top of the server page
                    # when we are filtering the selected_volcanoes() reactive object. 
                    
+                   
+                   # see the columns in the volcanoes dataset, and add a widget to further filter your selected_volcanoes() server object
                    #  --- --- --- some suggestions: --- --- ---
-                   # 1. slider bar to only show volcanoes with "population over xxx within 30 km"
-                   # 2. slider input to show only volcanoes that have erupted in the last xxx years
-                   # 3. slider input to only show volcanoes taller than xxx elevation
-                   # 4. checkbox input to only show volcanoes in this evidence category
+                   # 1. slider bar to only show volcanoes population_within_30_km > xxxx 
+                   # 2. slider input to show volcanoes with last_eruption_year > xxxx
+                   # 3. slider input to only show volcanoes with elevation > xxxx
+                   # 4. checkbox input to only show volcanoes in  evidence category c("xx", "xx")
                    
                    # see available widgets here: http://shinyapps.dreamrs.fr/shinyWidgets/
+                   # and here: https://shiny.rstudio.com/gallery/widget-gallery.html
 
                    
                ), # end box 2
