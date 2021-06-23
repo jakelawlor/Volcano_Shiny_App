@@ -49,13 +49,8 @@ fluidRow(
                 
                 # text in normal
                 p("Use the space provided and suggestions in the code to add  an additional widget to the app."),
-                
-                # linebreak
-                
-                # text with link to
                 p("Created by Jake Lawlor.",  strong(a("See the Code!", href="https://github.com/jakelawlor/Volcano_Shiny_App/",  target = "_blank"))),
                 a("See More BIOS2 Trainings Here", href="https://bios2.github.io/",  target = "_blank"),
-                
                 
                 
            ), # end box 1
