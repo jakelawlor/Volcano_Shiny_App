@@ -17,9 +17,14 @@ function(input, output, session) {
   
   
   # Import and clean data  ----------------------------------------
-  volcano <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-12/volcano.csv')  %>%
-
+  # this dataset comes from the May 12, 2020 TidyTuesday dataset, "eruptions"
+  # here, we upload data from the TidyTuesday repo and slightly manipulate it
+  # to give us some variable options to play with. 
+  volcano <-
     
+    # read data from tidytuesday repo
+    readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-05-12/volcano.csv')  %>%
+
     # select columns of interest
     select(volcano_name, 
            primary_volcano_type,
@@ -38,7 +43,7 @@ function(input, output, session) {
     # change last eruption year to numeric
     mutate(last_eruption_year = as.numeric(last_eruption_year),
            
-           # consolidate volcano types
+           # consolidate volcano types, as they are spelled many ways in the original dataset (i.e. "Stratovolcano" vs "Strato-volcano")
            volcano_type_consolidated = case_when(grepl("Caldera",primary_volcano_type) ~ "Caldera",
                                                  grepl("strato",str_to_lower(primary_volcano_type)) ~ "Stratovolcano",
                                                  grepl("shield",str_to_lower(primary_volcano_type)) ~ "Shield",
@@ -63,19 +68,20 @@ function(input, output, session) {
     
     # change continent into factor (this helps keep order consistent)
     mutate(  continent  = factor(continent, levels = c("Americas","Asia","Europe","Oceania","Africa","Antarctica","Under Sea")))
+  #------------ end data cleaning -----------------
   
   
   
   
-  
-  # make reactive dataset of selected volcanoes to show on the map
-  # ------------------------------------------------
+  # Create Reactive Subset ------------------------------------------------ 
   # Make a subset of the data as a reactive value
-  # this subset pulls volcano rows only in the selected types of volcano
+  # this subset pulls volcano rows only in the selected types of volcano from the UI checkbox
   selected_volcanoes <- reactive({
-    volcano %>%
+    
+    # start with full dataset
+    volcano %>% 
       
-      # select only volcanoes in the selected volcano type (by checkboxes in the UI)
+      # select only volcanoes in the selected volcano type (from checkboxes in the UI)
       filter(volcano_type_consolidated %in% input$volcano_type) %>%
       
       # Space to add your suggested filer here!! 
@@ -83,13 +89,12 @@ function(input, output, session) {
       # filter() %>%
       # --- --- --- --- --- --- --- --- --- --- --- --- ---
       
-      # change volcano type into factor (this makes plotting it more consistent)
+      # change volcano type into factor (this makes plotting it more consistent re order of colors)
       mutate(volcano_type_consolidated = factor(volcano_type_consolidated,
-                                                levels = c("Stratovolcano" , "Shield",  "Cone",   "Caldera", "Volcanic Field",
-                                                           "Complex" ,  "Other" ,  "Lava Dome" , "Submarine" ) ) )
+                                                levels =  unique(volcano$volcano_type_consolidated) ) )
   })
   
-  
+ 
   
   # make output element for continents barplot 
   #------------------------------------------------------------
@@ -111,13 +116,15 @@ function(input, output, session) {
     # IF a selected_volcanoes() object exists, update the blank ggplot. 
     # basically this makes it not mess up when nothing is selected
     if(nrow(selected_volcanoes()) >=1){ 
+      
+      # add bars to barplot
       barplot <- barplot +
         geom_bar(data = selected_volcanoes(), show.legend = F) +
         scale_fill_manual(values = RColorBrewer::brewer.pal(9,"Set1"), 
                           drop=F) +
         scale_x_discrete(drop=F)
       
-    }
+    } # end if statement
     
     # print the plot
     barplot
@@ -131,7 +138,7 @@ function(input, output, session) {
   output$volcanomap <- renderLeaflet({
     
     # add blank leaflet map 
-    leaflet( options = leafletOptions(minZoom = 2, maxZoom = 10, zoomControl = TRUE)) %>%
+    leaflet(options = leafletOptions(minZoom = 2, maxZoom = 10, zoomControl = TRUE)) %>%
       # add map tiles from CartoDB. 
       addProviderTiles("CartoDB.VoyagerNoLabels") %>%
       # set lat long and zoom to start
@@ -147,7 +154,7 @@ function(input, output, session) {
   # that's not what we want.  We won't go into more details for now, but that's what this code means.  
   # read more about leaflet and Shiny here: https://rstudio.github.io/leaflet/shiny.html
   
-  observe({
+  observe({ # "observe" in shiny speak = "do this whenever reactive elements change"
     
     # make a colorpalette function for the 9 volcano types
     pal <- colorFactor(RColorBrewer::brewer.pal(9,"Set1"), 
@@ -155,7 +162,7 @@ function(input, output, session) {
     
     # when something is changed, clear existing points, and add new ones
     leafletProxy("volcanomap") %>%
-      clearMarkers() %>%       # clear points
+      clearMarkers() %>%       # clear points from last selected options
       addCircleMarkers(        # add new points from "selected_volcanoes()" reactive object
         data = selected_volcanoes(),
         lng = ~longitude,

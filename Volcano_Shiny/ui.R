@@ -23,11 +23,6 @@ header <- dashboardHeader(
 
 # create dashboard body - this is the major UI element
 body <- dashboardBody(
-    tags$style(" body {
-    -moz-transform: scale(0.8, 0.8); /* Moz-browsers */
-    zoom: 0.8; /* Other non-webkit browsers */
-    zoom: 80%; /* Webkit browsers */
-}"),
 
 # make first row of elements (actually, this will be the only row)
 fluidRow(
@@ -133,7 +128,15 @@ fluidRow(
            ) # end box with map
     ) # end second column
     
-) # end fluidrow
+), # end fluidrow
+
+# Make a CSS change so this app shows at 90% zoom on browsers
+# only adding this because it looked more zoomed in on my web browser than it did on my RStudio viewer
+tags$style(" body {
+    -moz-transform: scale(0.9, 0.9); /* Moz-browsers */
+    zoom: 0.9; /* Other non-webkit browsers */
+    zoom: 90%; /* Webkit browsers */}"),
+
 ) # end body
 
 
@@ -141,7 +144,7 @@ fluidRow(
 dashboardPage(
     skin = "blue",
     header = header,
-    sidebar = dashboardSidebar(disable = TRUE), # here, we only have one tab, so we don't need a sidebar
+    sidebar = dashboardSidebar(disable = TRUE), # here, we only have one tab, so we don't need a sidebar, we will just disable it. 
     body = body
 )
 
