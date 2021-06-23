@@ -108,7 +108,7 @@ function(input, output, session) {
             panel.background = element_rect(color="transparent",fill="transparent"),
             panel.border = element_rect(color="transparent",fill="transparent"))+
       labs(x=NULL, y=NULL, title = NULL) +
-      theme(axis.text.x = element_text(angle=45,hjust=1))
+      theme(axis.text.x = element_text(angle=45,hjust=1, size = 10))
     
     
     # IF a selected_volcanoes() object exists, update the blank ggplot. 
