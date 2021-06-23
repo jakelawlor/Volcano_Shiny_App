@@ -36,6 +36,7 @@ fluidRow(
            box( width = NULL,
                 status="primary", # this line can change the automatic color of the box. options are "info", "primary","warning","danger', and "success"
                 title = NULL,
+                
                 # background = "black",
                 
                 # add some text in bold
@@ -64,6 +65,7 @@ fluidRow(
            #-----------------------------------------------
            box(width = NULL, status = "primary",
                title  = "Selection Criteria", solidHeader = T, 
+               collapsible = T,
                
                # Widget specifying the species to be included on the plot
                checkboxGroupButtons(
