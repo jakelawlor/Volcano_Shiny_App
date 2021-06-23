@@ -28,7 +28,7 @@ body <- dashboardBody(
     fluidRow(
         
         # make first column, 25% of page - width = 3 of 12 columns
-        column(width = 3,
+        column(width = 4,
                
                
                # Box 1: text explaining what this app is
@@ -119,7 +119,7 @@ body <- dashboardBody(
         
         # second column - 75% of page (9 of 12 columns)
         #--------------------------------------------------
-        column(width = 9,
+        column(width = 8,
                
                # Box 3: leaflet map
                box(width = NULL, background = "light-blue", 
