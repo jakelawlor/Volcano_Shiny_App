@@ -6,4 +6,4 @@ Here, you will find code to create a Shiny Application to map volcanoes of the w
 
 ## [Run the App!](https://jakelawlor.shinyapps.io/Volcanoes_of_the_World/)
 
-<img src="readme_image/app_screenshot.png">
+<img src="readme_image/volcano_screenshot.png">
